@@ -1,0 +1,80 @@
+# Environment variables (SECRETS - DO NOT COMMIT)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
+*.duckdb.wal
+
+# Logs
+*.log
+logs/
+
+# Node modules (for frontend)
+chatbot-ui/node_modules/
+chatbot-ui/dist/
+chatbot-ui/build/
+chatbot-ui/.vite/
+
+# HuggingFace cache
+.cache/
+huggingface/
+
+# Model cache
+models/
+*.bin
+*.safetensors
+
+# Data files (optional - uncomment if you don't want to commit large CSV files)
+# data/ingres/*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+

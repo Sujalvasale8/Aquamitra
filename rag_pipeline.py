@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 
 # LlamaIndex
-from llama_index.llms.google_genai import GoogleAIGemini
+from llama_index.llms.google_genai import GoogleGenAI
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import Settings, Document, VectorStoreIndex
 from llama_index.core.query_engine import NLSQLTableQueryEngine, RouterQueryEngine
@@ -102,8 +102,9 @@ async def _init_models():
     print("🔑 Gemini API key loaded")
 
     # FIXED: Use the ASYNC Google LLM
-    Settings.llm = GoogleAIGemini(
-        model="gemini-2.0-flash",
+    # Using gemini-2.5-flash (Gemini 1.5 models were shut down Sept 2025)
+    Settings.llm = GoogleGenAI(
+        model="gemini-2.5-flash",
         api_key=key,
         use_async=True
     )
@@ -128,11 +129,15 @@ async def build_router():
         _engine = create_engine("duckdb:///ingres.duckdb")
         _ensure_tables(_engine)
 
+    # Build metadata manually
     metadata, table = _build_metadata(_engine)
 
-    metadata = MetaData()
-    sql_db = SQLDatabase(_engine, metadata=metadata, include_tables=["assessments"])
-    metadata.reflect(bind=_engine, only=["assessments"])
+    # Create SQLDatabase with the pre-built metadata
+    sql_db = SQLDatabase(
+        _engine,
+        metadata=metadata,
+        include_tables=["assessments"]
+    )
 
     base_sql = NLSQLTableQueryEngine(
         sql_database=sql_db,
