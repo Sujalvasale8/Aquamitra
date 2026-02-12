@@ -1,0 +1,187 @@
+================================================================================
+  AQUAMITRA - WINDOWS QUICK START GUIDE
+================================================================================
+
+📋 PREREQUISITES:
+  - Python 3.11 (NOT 3.12 or 3.13)
+  - Node.js 18+ and npm
+  - Git
+
+================================================================================
+🚀 FIRST TIME SETUP (Do this once)
+================================================================================
+
+1. Open Command Prompt and navigate to the project folder:
+   
+   cd path\to\Aquamitra
+
+
+2. Run the automated setup script:
+   
+   setup-windows.bat
+
+
+3. Edit the .env file with your API keys:
+   
+   notepad .env
+   
+   Add your keys:
+   GROQ_API_KEY=your_groq_key_here
+   GOOGLE_API_KEY=your_google_key_here
+   HF_TOKEN=your_huggingface_token_here
+   
+   Save and close.
+
+
+4. Install frontend dependencies:
+   
+   cd chatbot-ui
+   npm install
+   cd ..
+
+
+================================================================================
+▶️ RUNNING THE PROJECT (Every time)
+================================================================================
+
+STEP 1: Start Backend Server
+-----------------------------
+Open Command Prompt #1:
+
+   cd path\to\Aquamitra
+   start-windows.bat
+
+Keep this window open!
+
+
+STEP 2: Start Frontend Server
+------------------------------
+Open Command Prompt #2:
+
+   cd path\to\Aquamitra\chatbot-ui
+   npm run dev
+
+Keep this window open!
+
+
+STEP 3: Open in Browser
+------------------------
+Open your browser and go to:
+
+   http://localhost:5173
+
+
+================================================================================
+🧪 TEST QUERIES
+================================================================================
+
+Try these to verify everything works:
+
+1. "How many total records are in the database?"
+2. "What is the average rainfall in Madhya Pradesh?"
+3. "Show me top 5 districts with highest groundwater usage"
+4. "Show me areas in Madhya Pradesh where groundwater is being sustainably managed"
+
+
+================================================================================
+🛑 STOPPING THE SERVERS
+================================================================================
+
+Backend: Press Ctrl+C in Command Prompt #1
+Frontend: Press Ctrl+C in Command Prompt #2
+
+
+================================================================================
+⚠️ TROUBLESHOOTING
+================================================================================
+
+Problem: "Python not found"
+Solution: Install Python 3.11 from https://www.python.org/downloads/
+          Make sure to check "Add Python to PATH" during installation
+
+
+Problem: "Node not found"
+Solution: Install Node.js from https://nodejs.org/
+
+
+Problem: Port 8000 already in use
+Solution: netstat -ano | findstr :8000
+          taskkill /PID <PID_NUMBER> /F
+
+
+Problem: Port 5173 already in use
+Solution: netstat -ano | findstr :5173
+          taskkill /PID <PID_NUMBER> /F
+
+
+Problem: "Module not found"
+Solution: Make sure virtual environment is activated:
+          .venv\Scripts\activate
+          pip install -r requirements.txt
+
+
+Problem: Groq API rate limit
+Solution: Wait 1-2 minutes or upgrade to Groq Dev Tier
+
+
+================================================================================
+📞 GET API KEYS
+================================================================================
+
+Groq API Key (Free - 100k tokens/day):
+  https://console.groq.com/keys
+
+Google API Key (Free - for translation):
+  https://aistudio.google.com/app/apikey
+
+HuggingFace Token (Free):
+  https://huggingface.co/settings/tokens
+
+
+================================================================================
+✅ SUCCESS CHECKLIST
+================================================================================
+
+[ ] Python 3.11 installed
+[ ] Node.js installed
+[ ] Repository cloned
+[ ] setup-windows.bat executed successfully
+[ ] .env file created with API keys
+[ ] Frontend dependencies installed (npm install)
+[ ] Backend server running (port 8000)
+[ ] Frontend server running (port 5173)
+[ ] Browser opened to http://localhost:5173
+[ ] Test queries working
+
+
+================================================================================
+🎯 SUPPORTED FEATURES
+================================================================================
+
+✅ 70+ question types confirmed working
+✅ State-specific filtering (22 Indian states)
+✅ Numerical aggregations (AVG, SUM, COUNT, MAX, MIN)
+✅ Top/Bottom queries
+✅ Status-based filtering (safe, over-exploited, critical, semi-critical)
+✅ Multilingual support (7 languages: English, Hindi, Marathi, Gujarati, Tamil, Telugu, Kannada)
+
+
+================================================================================
+📁 IMPORTANT FILES
+================================================================================
+
+server.py              - Backend server
+rag_pipeline.py        - RAG logic with Groq LLM
+.env                   - Your API keys (DO NOT SHARE!)
+data/ingres/*.csv      - Groundwater data (21,142 records)
+chatbot-ui/            - React frontend
+
+
+================================================================================
+
+For detailed documentation, see: WINDOWS_SETUP.md
+
+Happy Testing! 🚀
+
+================================================================================
+
